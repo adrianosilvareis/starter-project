@@ -1,0 +1,73 @@
+{
+  "name": "starter-project",
+  "version": "1.0.0",
+  "description": "este é um projeto starter - altere esta descrição",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf lib && rimraf dist && rimraf coverage",
+    "build": "npm run clear && babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "jest --coverage",
+    "coveralls": "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianosilvareis/starter-project.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Adriano Reis <adriano_silvareis@hotmail.com> (https://github.com/adrianosilvareis/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrianosilvareis/starter-project/issues"
+  },
+  "homepage": "https://github.com/adrianosilvareis/starter-project#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "jest-context": "^2.1.0",
+    "rimraf": "^2.6.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    },
+    "setupFiles": [
+      "jest-context/setup"
+    ]
+  }
+}
